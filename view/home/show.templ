@@ -1,0 +1,17 @@
+package home
+
+import (
+	"github.com/spleeroosh/go-translate/view/components/input"
+	"github.com/spleeroosh/go-translate/view/layout"
+)
+
+templ Show() {
+	@layout.Base() {
+		<section>
+			hi there
+			@components.Input(components.InputProps{
+				Type: "number",
+			})
+		</section>
+	}
+}

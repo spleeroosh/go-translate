@@ -1,0 +1,11 @@
+package layout
+
+templ Base() {
+	<html>
+		<head></head>
+		<body>
+			<h1>User: { GetUserFromContext(ctx) }</h1>
+			{ children... }
+		</body>
+	</html>
+}

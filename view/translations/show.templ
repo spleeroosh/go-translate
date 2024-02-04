@@ -1,0 +1,23 @@
+package translations
+
+import (
+	"github.com/spleeroosh/go-translate/view/layout"
+	"github.com/spleeroosh/go-translate/model"
+)
+
+templ Show(translation *model.Translation) {
+	@layout.Base() {
+		<table>
+			<tr>
+				<th>Language</th>
+				<th>Key</th>
+				<th>Text</th>
+			</tr>
+			<tr>
+				<td>{ translation.Language }</td>
+				<td>{ translation.Key }</td>
+				<td>{ translation.Text }</td>
+			</tr>
+		</table>
+	}
+}
