@@ -39,7 +39,9 @@ func Show() templ.Component {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = components.Input(components.InputProps{
-				Type: "number",
+				Type:  "email",
+				Name:  "user-email",
+				Label: "email",
 			}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
