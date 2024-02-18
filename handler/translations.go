@@ -10,8 +10,8 @@ type TranslationsHandler struct{}
 
 func (h TranslationsHandler) HandleTranslationsShow(c echo.Context) error {
 	return render(c, translations.Show(&model.Translation{
-		Key:      "global.action.cancel",
-		Text:     "Cancel",
-		Language: "en",
+		Key:         "global.action.cancel",
+		Lang:        "en",
+		Translation: "Cancel",
 	}))
 }
