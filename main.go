@@ -59,10 +59,12 @@ func main() {
 
 	// Inject translation store into handlers
 	homeHandler := handler.HomeHandler{}
+	authHandler := handler.AuthHandler{}
 	translationsHandler := handler.TranslationsHandler{}
 
 	app.Use(withUser)
 	app.GET("/", homeHandler.HandleHomeShow)
+	app.GET("/auth", authHandler.HandleAuthShow)
 	app.GET("/translations", translationsHandler.HandleTranslationsShow)
 
 	// Start server

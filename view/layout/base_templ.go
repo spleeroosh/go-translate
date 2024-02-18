@@ -23,20 +23,7 @@ func Base() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html class=\"h-full\"><head><script src=\"https://cdn.tailwindcss.com\"></script><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css\"></head><body class=\"h-full\"><div class=\"bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 flex flex-col justify-center items-center h-full\"><h1 class=\"text-3xl font-bold underline text-white mb-8\">User: ")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(GetUserFromContext(ctx))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/layout/base.templ`, Line: 10, Col: 92}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html class=\"h-full\"><head><script src=\"https://cdn.tailwindcss.com\"></script><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css\"></head><body class=\"h-full bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600\"><header class=\"flex justify-between items-center py-4 px-8\"><a href=\"/\" class=\"flex items-center\"><img src=\"logo.svg\" alt=\"Logo\" class=\"h-8 w-auto\"><h1 class=\"text-white text-xl ml-2 font-bold\">Your App Name</h1></a><div><nav class=\"flex items-center\"><a href=\"/projects\" class=\"text-white hover:text-gray-200 mr-4\">Projects</a> <a href=\"/about\" class=\"text-white hover:text-gray-200 mr-4\">About</a> <a href=\"/auth\" class=\"text-white hover:text-gray-200 mr-4\">Sign In</a> <a href=\"/auth\" class=\"text-white hover:text-gray-200\">Sign Up</a></nav></div></header><main class=\"flex flex-col items-center justify-center h-full\"><h1 class=\"text-3xl font-bold text-white mb-8\">Welcome to Your App</h1>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -44,7 +31,7 @@ func Base() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</main><footer class=\"text-center text-white py-4\"><p>&copy; 2024 Your App. All rights reserved.</p></footer></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
