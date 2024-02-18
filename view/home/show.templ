@@ -7,13 +7,15 @@ import (
 
 templ Show() {
 	@layout.Base() {
-		<section>
-			hi there
-			@components.Input(components.InputProps{
-				Type:  "email",
-				Name:  "user-email",
-				Label: "email",
-			})
-		</section>
+		<div class="bg-white p-8 shadow-md rounded-md max-w-md">
+			<h1 class="text-2xl font-bold mb-6">Sign In</h1>
+			<form id="signin-form" class="space-y-4" hx-post="/signin">
+				@components.Input(components.InputProps{Type: "email", Name: "user-email", Label: "Email"})
+				@components.Input(components.InputProps{Type: "password", Name: "user-password", Label: "Password"})
+				<div>
+					<button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2 mt-4 transition duration-300 ease-in-out">Sign In</button>
+				</div>
+			</form>
+		</div>
 	}
 }

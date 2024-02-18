@@ -34,19 +34,19 @@ func Show() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section>hi there")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"bg-white p-8 shadow-md rounded-md max-w-md\"><h1 class=\"text-2xl font-bold mb-6\">Sign In</h1><form id=\"signin-form\" class=\"space-y-4\" hx-post=\"/signin\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = components.Input(components.InputProps{
-				Type:  "email",
-				Name:  "user-email",
-				Label: "email",
-			}).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = components.Input(components.InputProps{Type: "email", Name: "user-email", Label: "Email"}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</section>")
+			templ_7745c5c3_Err = components.Input(components.InputProps{Type: "password", Name: "user-password", Label: "Password"}).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><button type=\"submit\" class=\"w-full bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2 mt-4 transition duration-300 ease-in-out\">Sign In</button></div></form></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

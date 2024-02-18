@@ -1,5 +1,3 @@
-// main.go
-
 package main
 
 import (
@@ -7,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
@@ -16,10 +15,15 @@ import (
 	"github.com/spleeroosh/go-translate/handler"
 )
 
+const (
+	maxDBConnectionAttempts = 10
+	dbConnectionRetryDelay  = 5 * time.Second
+)
+
 func main() {
 	// Load environment variables from .env file
 	if err := godotenv.Load("/app/.env"); err != nil {
-		log.Fatalf("Error loading .env file asdasdasdas: %v", err)
+		log.Fatalf("Error loading .env file: %v", err)
 	}
 
 	app := echo.New()
@@ -31,10 +35,20 @@ func main() {
 	// Load configuration from environment variables
 	cfg := config.NewConfig()
 	fmt.Println(cfg)
-	// Initialize database connection
-	db, err := database.Connect(cfg.DatabaseURL())
+
+	// Initialize database connection with retry logic
+	var db *database.DB
+	var err error
+	for attempt := 1; attempt <= maxDBConnectionAttempts; attempt++ {
+		db, err = database.Connect(cfg.DatabaseURL())
+		if err == nil {
+			break
+		}
+		log.Printf("Failed to connect to database (attempt %d/%d): %v", attempt, maxDBConnectionAttempts, err)
+		time.Sleep(dbConnectionRetryDelay)
+	}
 	if err != nil {
-		log.Fatalf("Failed to connect to database: %v", err)
+		log.Fatalf("Exceeded maximum number of database connection attempts: %v", err)
 	}
 	defer db.Close()
 
